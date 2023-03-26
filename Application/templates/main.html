@@ -1,0 +1,82 @@
+<!doctype html>
+<style>
+    form{
+        margin:auto;
+        width: 35%;
+        text-align: left;
+
+    }
+
+    .result {
+        margin:auto;
+        width: 35%;
+        border: 1px solid #acc;
+    }
+</style>
+
+<head>
+    <title> Прогнозирование </title>
+</head>
+
+<form action = "{{url_for('main')}}" method = 'POST'>
+    <fieldset>
+        <legend>  Прогнозирование прочности при растяжении, МПа 
+            и модуля упругости при растяжении, ГПа </legend>
+        <legend>  Соотношение матрица-наполнитель  </legend>
+        <input name = "Соотношение матрица-наполнитель" type = "float"
+        required>
+        <legend> Плотность, кг/м3  </legend>  
+        <input name = "Плотность, кг/м3" type = "float"
+        required>
+        <legend> модуль упругости, ГПа </legend>
+        <input name = "модуль упругости, ГПа" type = "float"
+        required>
+        <legend> Количество отвердителя, м.% </legend>
+        <input name = "Количество отвердителя, м.%" type = "float"
+        required>
+        <legend> Содержание эпоксидных групп,%_2 </legend>
+        <input name = "Содержание эпоксидных групп,%_2" type = "float"
+        required>
+        <legend> Температура вспышки, С_2 </legend>
+        <input name = "Температура вспышки, С_2" type = "float"
+        required>
+        <legend> Поверхностная плотность, г/м2 </legend>
+        <input name = "Поверхностная плотность, г/м2" type = "float"
+        required>
+        <legend> Потребление смолы, г/м2 </legend>
+        <input name = "Потребление смолы, г/м2" type = "float"
+        required>
+        <legend> Угол нашивки, град_label </legend>
+        <input name = "Угол нашивки, град_label" type = "float"
+        required>
+        <legend> Шаг нашивки </legend>
+        <input name = "Шаг нашивки" type = "float"
+        required>
+        <legend> Плотность нашивки  </legend>
+        <input name = "Плотность нашивки" type = "float"
+        required>
+        <br>
+        <br>
+        <input type = "submit">
+    </fieldset>
+</form>
+
+<div class = "result" align = "center">
+    {% if strength %}
+        <br>
+        <p style = "font-size:50px">
+        Прочность при растяжении, МПа
+        </p>
+        <p style = "font-size:50px"> {{strength}}</p>
+    {% endif %}
+</div>
+
+<div class = "result" align = "center">
+    {% if modulus %}
+        <br>
+        <p style = "font-size:50px">
+        Модуль упругости при растяжении, ГПа
+        </p>
+        <p style = "font-size:50px"> {{modulus}}</p>
+    {% endif %}
+</div>
